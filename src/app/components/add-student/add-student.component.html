@@ -1,0 +1,99 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Add Student</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a (click)="goStudentList()">Student Lists</a></li>
+             <li class="breadcrumb-item">Add Student</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+        <div class="row text-center">
+          <div class="col-lg-6" style="margin-left: 20%;">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Add Student</h5>
+                   <form [formGroup]="addForm" (ngSubmit)="onSubmit()" >
+                     <div class="col-sm-8" *ngIf="submitted && addForm.controls['name'].errors" class="alert alert-danger form-danger"
+                        role="alert">
+                        <div *ngIf="addForm.controls['name'].errors.required">Name can't be empty</div>
+                    </div>
+                    <div class="col-sm-8"*ngIf="addForm.controls['name'].invalid && (addForm.controls['name'].dirty || addForm.controls['name'].touched)"
+                        class="alert alert-danger form-danger" role="alert">
+                        <label for="name" class="required">Name Required</label>
+                    </div>
+                     <div class="form-group row">
+                        <label for="name" class="col-sm-4 col-form-label required">Name</label>
+                     
+                        <div class="col-sm-8"> 
+                           <input type="text" name="name" class="form-control" formControlName="name">
+                        </div>
+                     </div>
+                     <br>
+                     <div class="col-sm-8" *ngIf="submitted && addForm.controls['fatherName'].errors" class="alert alert-danger form-danger"
+                        role="alert">
+                        <div *ngIf="addForm.controls['fatherName'].errors.required">Name can't be empty</div>
+                    </div>
+                    <div *ngIf="addForm.controls['fatherName'].invalid && (addForm.controls['fatherName'].dirty || addForm.controls['fatherName'].touched)"
+                        class="alert alert-danger form-danger" role="alert">
+                        <label for="fatherName">Father Name Required</label>
+                    </div>
+                     <div class="form-group row">
+                        <label for="fatherName" class="col-sm-4 col-form-label required">Father Name</label>
+                        <div class="col-sm-8"> 
+                           <input type="text" name="fatherName" class="form-control" formControlName="fatherName">
+                        </div>
+                     </div>
+                     <br>
+                     <div class="form-group row">
+                       <label for="address" class="col-sm-4 col-form-label">Address</label>
+                        <div class="col-sm-8">
+                          <input type="text" name="address" class="form-control" formControlName="address">
+                          </div>
+                       </div>
+                    <br>
+                    <div *ngIf="submitted && addForm.controls['phoneNumber'].errors" class="alert alert-danger form-danger"
+                       role="alert">
+                       <div *ngIf="addForm.controls['phoneNumber'].errors.required">Phone Number can't be empty</div>
+                   </div>
+                     <div class="form-group row">
+                       <label for="phoneNumber" class="col-sm-4 col-form-label required">Phone Number</label>
+                       
+                   <div *ngIf="addForm.controls['phoneNumber'].invalid && (addForm.controls['phoneNumber'].dirty || addForm.controls['phoneNumber'].touched)"
+                       class="alert alert-danger form-danger" role="alert">
+                       <label for="phoneNumber">Phone Number Required</label>
+                   </div>
+                       <div class="col-sm-8"> 
+                          <input type="text" name="phoneNumber" class="form-control" formControlName="phoneNumber">
+                       </div>
+                    </div>
+                    <br>
+                    <div *ngIf="submitted && addForm.controls['email'].errors" class="alert alert-danger form-danger"
+                       role="alert">
+                       <div *ngIf="addForm.controls['email'].errors.required">Email can't be empty</div>
+                   </div>
+                   <div *ngIf="addForm.controls['email'].invalid && (addForm.controls['email'].dirty || addForm.controls['email'].touched)"
+                       class="alert alert-danger form-danger" role="alert">
+                       <label for="model">Email Required</label>
+                   </div>
+                     <div class="form-group row">
+                       <label for="email" class="col-sm-4 col-form-label required">Email</label>
+                       
+                       <div class="col-sm-8"> 
+                          <input type="text" name="email" class="form-control" formControlName="email">
+                       </div>
+                    </div>
+                    <br>
+                 
+                     <div class="text-center"> 
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                         <button style="margin-left: 5px;" type="reset" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                     </div>
+                  </form>
+                </div>
+             </div>
+          </div>
+        </div>
+     </section>
+   </main>

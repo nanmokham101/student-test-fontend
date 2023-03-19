@@ -1,0 +1,93 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+       <h1>Edit Student</h1>
+       <nav>
+          <ol class="breadcrumb">
+             <li class="breadcrumb-item"><a routerLink="/student-list">Student Lists</a></li>
+             <li class="breadcrumb-item">>Edit Student</li>
+          </ol>
+       </nav>
+    </div>
+    <section class="section">
+        <div class="row text-center">
+          <div class="col-lg-6" style="margin-left: 20%;">
+             <div class="card">
+                <div class="card-body">
+                   <h5 class="card-title">Edit Student</h5>
+                   <div *ngIf="errorResults.length > 0">
+                    <div *ngFor="let error of errorResults; let i = index" class="alert alert-danger form-danger" role="alert">
+                        <label for="boughtDate">{{error}}</label>
+                    </div>
+                </div>
+                   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+                    <div class="hidden">
+                        <input type="hidden" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+                    </div>
+                    <div *ngIf="submitted && editForm.controls['name'].errors" class="alert alert-danger form-danger"
+                    role="alert">
+                    <div *ngIf="editForm.controls['name'].errors.required">Name can't be empty</div>
+                </div>
+                <div *ngIf="editForm.controls['name'].invalid && (editForm.controls['name'].dirty || editForm.controls['name'].touched)"
+                    class="alert alert-danger form-danger" role="alert">
+                    <label for="name">Name Required</label>
+                </div>
+                      <div class="form-group row">
+                         <label for="name" class="col-sm-4 col-form-label required">Name</label>
+                     
+                         <div class="col-sm-8"> 
+                            <input type="text" name="name" class="form-control required" formControlName="name">
+                         </div>
+                      </div>
+                      <br>
+                      
+                      <div class="form-group row">
+                        <label for="address" class="col-sm-4 col-form-label">Address</label>
+                        <div class="col-sm-8"> 
+                           <input type="text" name="address" class="form-control" formControlName="address">
+                        </div>
+                     </div>
+                     <br>
+                     <div *ngIf="submitted && editForm.controls['phoneNumber'].errors" class="alert alert-danger form-danger"
+                        role="alert">
+                        <div *ngIf="editForm.controls['phoneNumber'].errors.required">Phone Number can't be empty</div>
+                    </div>
+                    <div *ngIf="editForm.controls['phoneNumber'].invalid && (editForm.controls['phoneNumber'].dirty || editForm.controls['phoneNumber'].touched)"
+                        class="alert alert-danger form-danger" role="alert">
+                        <label for="phoneNumber">Phone Number Required</label>
+                    </div>
+                      <div class="form-group row">
+                        <label for="phoneNumber" class="col-sm-4 col-form-label required">Phone Number</label>
+                        
+                        <div class="col-sm-8"> 
+                           <input type="text" name="phoneNumber" class="form-control" formControlName="phoneNumber">
+                        </div>
+                     </div>
+                     <br>
+                     <div *ngIf="submitted && editForm.controls['email'].errors" class="alert alert-danger form-danger"
+                        role="alert">
+                        <div *ngIf="editForm.controls['email'].errors.required">Email can't be empty</div>
+                    </div>
+                    <div *ngIf="editForm.controls['email'].invalid && (editForm.controls['email'].dirty || editForm.controls['email'].touched)"
+                        class="alert alert-danger form-danger" role="alert">
+                        <label for="model">Email Required</label>
+                    </div>
+                      <div class="form-group row">
+                        <label for="email" class="col-sm-4 col-form-label required">Email</label>
+                        
+                        <div class="col-sm-8"> 
+                           <input type="text" name="email" class="form-control" formControlName="email">
+                        </div>
+                     </div>
+                     <br>
+                  
+                      <div class="text-center"> 
+                         <button type="submit" class="btn btn-primary">Submit</button>
+                          <button style="margin-left: 5px;" type="reset" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                      </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+        </div>
+     </section>
+   </main>
